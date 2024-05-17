@@ -32,10 +32,10 @@ public class CalcNumberServer {
                 CalcNumber result = (CalcNumber) calc;
                 oos.writeObject(result);
                 oos.flush();
-                // close処理
-                ois.close();
-                oos.close();
             }
+            // close処理
+            ois.close();
+            oos.close();
             // socketの終了。
             socket.close();
             server.close();
