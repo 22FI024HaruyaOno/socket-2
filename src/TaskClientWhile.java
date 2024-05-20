@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CalcNumberClient {
+public class TaskClientWhile {
     public static void main(String arg[]) {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -23,21 +23,21 @@ public class CalcNumberClient {
                 System.out.println("数字を入力してください(終了する場合→1以下の数字) ↓");
                 int setNum = scanner.nextInt();
                 if (setNum <= 1) {
-                    CalcNumber calc = new CalcNumber();
-                    calc.setExecNumber(setNum);
-                    calc.setIsClose(true);
-                    oos.writeObject(calc);
+                    TaskObject task = new TaskObject();
+                    task.setExecNumber(setNum);
+                    task.setIsClose(true);
+                    oos.writeObject(task);
                     oos.flush();
                     System.out.println("終了します");
                     break;
                 } else {
-                    CalcNumber calc = new CalcNumber();
-                    calc.setExecNumber(setNum);
-                    calc.setIsClose(false);
-                    oos.writeObject(calc);
+                    TaskObject task = new TaskObject();
+                    task.setExecNumber(setNum);
+                    task.setIsClose(false);
+                    oos.writeObject(task);
                     oos.flush();
-                    CalcNumber result = (CalcNumber) ois.readObject();
-                    System.out.println("入力値:" + calc.getInputNumber() + "に対する最大の素数は" + result.getResult());
+                    TaskObject result = (TaskObject) ois.readObject();
+                    System.out.println("入力値:" + task.getInputNumber() + "に対する最大の素数は" + result.getResult());
                     System.out.println("----------------------------------------");
                 }
             }
@@ -59,4 +59,3 @@ public class CalcNumberClient {
         }
     }
 }
-

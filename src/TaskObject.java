@@ -3,8 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CalcNumber implements Serializable,ITask {
-
+public class TaskObject implements Serializable,ITask{
     int inputNum;
     boolean serverClose;
     List<Integer> primes = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class CalcNumberServer {
+public class TaskServerWhile {
     public static void main(String arg[]) {
         boolean isClose = false;
         try {
@@ -23,13 +23,13 @@ public class CalcNumberServer {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             while (!isClose) {
                 // クライアントから送られてきたオブジェクトを受け取る
-                CalcNumber calcNum = (CalcNumber) ois.readObject();
-                isClose = calcNum.getIsClose();
+                TaskObject task = (TaskObject) ois.readObject();
+                isClose = task.getIsClose();
                 // ITaskにキャストして計算を行う
-                ITask calc = (ITask) calcNum;
+                ITask calc = (ITask) task;
                 calc.exec();
                 // 計算した結果をクライアントに返す
-                CalcNumber result = (CalcNumber) calc;
+                TaskObject result = (TaskObject) calc;
                 oos.writeObject(result);
                 oos.flush();
             }
